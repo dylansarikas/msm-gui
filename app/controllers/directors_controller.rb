@@ -40,8 +40,8 @@ class DirectorsController < ApplicationController
   end
 
   def destroy
-    @dir = Director.find(params[:id])
-    @dir.destroy
+    dir = Director.find(params[:id])
+    dir.destroy
 
     redirect_to("/directors")
   end
