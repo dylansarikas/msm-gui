@@ -27,6 +27,25 @@ class DirectorsController < ApplicationController
     redirect_to("/directors")
   end
 
+  def update
+    @dir = Director.find(params[:id])
+    @dir.name = params[:name]
+    @dir.dob = params[:dob]
+    @dir.bio = params[:bio]
+    @dir.image = params[:image]
+
+    @dir.save
+
+    redirect_to("/directors/#{params[:id]}")
+  end
+
+  def destroy
+    @dir = Director.find(params[:id])
+    @dir.destroy
+
+    redirect_to("/directors")
+  end
+
   def max_dob
     directors_by_dob_desc = Director.
       all.
